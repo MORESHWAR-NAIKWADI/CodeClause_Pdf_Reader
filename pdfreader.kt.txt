@@ -1,0 +1,25 @@
+package com.example.pdfreader
+
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.github.barteksc.pdfviewer.PDFView
+
+class PdfReader : AppCompatActivity() {
+
+    private lateinit var pdfView: PDFView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_pdf_reader)
+
+        pdfView = findViewById(R.id.pdfView)
+
+        // Load the PDF file from assets folder
+        loadPDF("sample.pdf")
+    }
+
+    private fun loadPDF(fileName: String) {
+        pdfView.fromAsset(fileName)
+            .load()
+    }
+}
